@@ -1,0 +1,20 @@
+{% extends "main/layout.html" %}
+
+{% block title %}Новости дня{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Новости дня</h1>
+        {% if news %}
+            {% for el in news %}
+                <div class="article-block">
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.text }}</p>
+                    <a href="{% url 'article-detail' el.id %}" class="btn btn-warning">Ознакомиться подробнее</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Пока новостей нет</p>
+        {% endif %}
+    </div>
+{% endblock %}
